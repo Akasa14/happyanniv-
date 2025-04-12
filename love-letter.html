@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>To My Love 💌</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Lora&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #f8f4f1;
+      font-family: 'Lora', serif;
+      margin: 0;
+      padding: 0;
+      color: #3e2f2f;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .scene {
+      width: 100%;
+      max-width: 600px;
+      height: 400px;
+      margin: 0 auto 60px;
+      perspective: 1000px;
+    }
+
+    .card {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 1s;
+      cursor: pointer;
+    }
+
+    .card.is-flipped {
+      transform: rotateY(180deg);
+    }
+
+    .card-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      padding: 30px;
+      box-sizing: border-box;
+    }
+
+    .card-front {
+      background: #e7d5cf;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2em;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .card-back {
+      background: #ffffff;
+      transform: rotateY(180deg);
+      overflow-y: auto;
+      font-size: 1.1em;
+      line-height: 1.6;
+      color: #3e2f2f;
+    }
+
+    .card-back p {
+      white-space: pre-wrap;
+      text-align: left;
+    }
+
+    .signature {
+      text-align: right;
+      margin-top: 20px;
+      font-style: italic;
+      font-family: 'Playfair Display', serif;
+      color: #8e5a63;
+    }
+
+    /* Pinterest Masonry Layout */
+    .masonry {
+      column-count: 4;
+      column-gap: 15px;
+    }
+
+    .masonry-item {
+      break-inside: avoid;
+      margin-bottom: 15px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .masonry-item img {
+      width: 100%;
+      display: block;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .masonry-item img:hover {
+      transform: scale(1.02);
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox.show {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .masonry {
+        column-count: 3;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .scene {
+        height: 320px;
+      }
+      .masonry {
+        column-count: 2;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .scene {
+        height: 250px;
+      }
+      .card-front {
+        font-size: 1.5em;
+      }
+      .card-back {
+        font-size: 1em;
+        padding: 20px;
+      }
+      .masonry {
+        column-count: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Kartu Surat Cinta -->
+    <div class="scene">
+      <div class="card" id="card">
+        <div class="card-face card-front">Click to Open</div>
+        <div class="card-face card-back">
+          <p>
+Hai Sayangku,
+
+Hari ini, aku belajar satu hal penting: bahwa kebersamaan itu bukan cuma soal waktu yang telah kita lalui, tapi soal dua hati yang tetap saling milih meskipun udah tahu kekurangan dan kelebihannya masing-masing.
+            
+Kita udah jalanin hubungan ini lebih dari 1 tahun—tepatnya 1 tahun 2 bulan. Ngelewatin hal-hal yang mungkin gak selalu indah. Ada tawa, ada tangis, ada perdebatan yang kadang bikin lelah. Ada kecewa.
+            
+Aku bukan cowok sempurna. Aku pernah selingkuh, cuek berlebihan, marah-marah tanpa sebab, susah dinasehati, dan bahkan buat kamu nangis. Tapi makasih... makasih udah lirik aku sekali lagi. Tentunya aku gak akan menyiakan kesempatan ini.
+
+Tunggu aku, ya, sayang. I will change everything. Aku gak akan janji, tapi aku akan buktiin.
+      
+Terima kasih sudah selalu milih aku, hari demi hari.
+Selamat anniversary, sayang.
+          </p>
+          <div class="signature">— Akasa</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Galeri ala Pinterest -->
+    <div class="masonry">
+      <div class="masonry-item"><img src="img1.jpg" onclick="openLightbox('img1.jpg')"></div>
+      <div class="masonry-item"><img src="img2.jpg" onclick="openLightbox('img2.jpg')"></div>
+      <div class="masonry-item"><img src="img3.jpg" onclick="openLightbox('img3.jpg')"></div>
+      <div class="masonry-item"><img src="img4.jpg" onclick="openLightbox('img4.jpg')"></div>
+      <div class="masonry-item"><img src="img5.jpg" onclick="openLightbox('img5.jpg')"></div>
+      <div class="masonry-item"><img src="img6.jpg" onclick="openLightbox('img6.jpg')"></div>
+      <div class="masonry-item"><img src="img7.jpg" onclick="openLightbox('img7.jpg')"></div>
+      <div class="masonry-item"><img src="img8.jpg" onclick="openLightbox('img8.jpg')"></div>
+      <div class="masonry-item"><img src="img9.jpg" onclick="openLightbox('img7.jpg')"></div>
+      <div class="masonry-item"><img src="img10.jpg" onclick="openLightbox('img8.jpg')"></div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="Preview">
+  </div>
+
+  <!-- Musik Background -->
+  <audio id="bgMusic" src="romantic_piano.mp3" preload="auto" loop></audio>
+
+  <script>
+    const card = document.getElementById('card');
+    const music = document.getElementById('bgMusic');
+    let hasPlayed = false;
+
+    card.addEventListener('click', () => {
+      card.classList.toggle('is-flipped');
+      if (!hasPlayed) {
+        music.play().catch(e => console.log("Autoplay blocked:", e));
+        hasPlayed = true;
+      }
+    });
+
+    function openLightbox(src) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox').classList.add('show');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('show');
+    }
+  </script>
+
+</body>
+</html>
